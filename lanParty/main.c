@@ -1,6 +1,6 @@
 #include "lanPartyLib.h"
 
- int main (int argc, char* argv[]) {
+int main (int argc, char* argv[]) {
     printf("Number of input files: %d\n", argc);
     printf("Exec name: %s\n", argv[0]);
     printf("File1: %s\n", argv[1]);
@@ -32,8 +32,10 @@ if(!f_out){
    BNode *root=NULL;
    ANode *root2=NULL;
    Evidence *e;
+
    int nrEchipe,nrInit,i,j,pct,op1,op2,op3,op4,op5;
    char bfN1[100],bfN2[100],bfEc[100]; // buffere pentru a stoca datele in structuri prin alocare dinamica
+
    initList(&l);
    initQueue(&q);
    fscanf(f_in,"%d",&nrEchipe);
@@ -43,22 +45,19 @@ if(!f_out){
           if(op2==1)
           delTillPow2(&l,&nrEchipe);
           if(op1==1)
-           printList(f_out,l);
-           addListToQueue(&l,&q); //Se efectueaza si stergerea (dealocarea) listei
-           if(op3==1)
-            {
+          printList(f_out,l);
+          addListToQueue(&l,&q); //Se efectueaza si stergerea (dealocarea) listei
+            if(op3==1){
              matchMaking(f_out,&q,&win,&lose,&root,&root2);
             }
-        if(op4==1)
-           {
+            if(op4==1){
             fprintf(f_out,"\nTOP 8 TEAMS:\n");
             rightInOrder(root,f_out);
-           }
-        if(op5==1)
-        {
+            }
+            if(op5==1){
             fprintf(f_out,"\nTHE LEVEL 2 TEAMS ARE: \n");
             rightInOrderAVL(root2,f_out);
-        }
+            }
            if(op3==1){
            deleteAVL(root2); //stergere arbore AVL
            deleteBST(root);  //stergere arbore BST

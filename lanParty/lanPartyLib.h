@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Player.h"
 #include <math.h>
 #define S (*s)
 #define L (*l)
@@ -12,7 +11,24 @@
 #define R (*root)
 #define R2 (*root2)
 #define TeamNULL Team tNULL; tNULL.nrJucatori=-999; tNULL.numeEchipa=NULL; tNULL.punctaj=-999; tNULL.p=NULL;
-    
+
+typedef struct Player{
+    char *firstName;
+    char *secondName;
+    int points;
+}Player;
+
+typedef struct Echipa{
+    Player *p;
+    int nrJucatori;
+    char *numeEchipa;
+    float punctaj;
+}Team;
+
+typedef struct evidenta{
+    Team t;
+}Evidence;
+
 typedef struct node{
     Team t;
     struct node* next;
